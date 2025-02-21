@@ -2,6 +2,7 @@
 import os
 from django.core.mail import send_mail
 from django.conf import settings
+from .realtime import detect
 
 # Fetch email credentials from environment variables
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")

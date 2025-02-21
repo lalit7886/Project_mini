@@ -1,0 +1,17 @@
+<!-- alert_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Violence Alert</title>
+  </head>
+  <body>
+    <h1>Violence Detection Status</h1>
+    {% if alert == 1 %}
+    <p>Violence detected! An alert has been sent.</p>
+    {% else %}
+    <p>No violence detected.</p>
+    {% endif %}
+  </body>
+</html>

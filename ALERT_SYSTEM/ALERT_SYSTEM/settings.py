@@ -40,9 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "alert_hood",
-    "tailwind",
-    "theme",
-    "violencedetection",
+    
 ]
 
 TAILWIND_APP_NAME = "theme"  # This is the name of the app that will be used to generate the tailwind files

@@ -5,6 +5,10 @@ import numpy as np
 import tensorflow as tf
 import h5py
 import json
+import os
+folder_name="fotage"
+os.makedirs(folder_name,exist_ok=True)
+j=0
 
 # Load video
 #video_path = "Violent.mov"
@@ -77,8 +81,8 @@ def detect(model, lm_list):
     result = model.predict(lm_list)
     print(f"DEBUG: Raw Model Prediction: {result}")
 
-    # Adjust threshold if needed
-    label = "violent" if result[0][0] < 0.35 else "neutral"
+    # Adjust threshold if needed based on my darset
+    label = "violent" if result[0][0] < 0.4 else "neutral"
     if label=="violent":
         with open('rojan.txt', 'w') as file:
             file.write('0')
@@ -103,6 +107,10 @@ while True:
 
         if len(lm_list) == 50:  # Make batch of 50 frames
             label = detect(model, lm_list)
+            if label=="violent":
+                path=os.path.join(folder_name,f"violent_footage_{j}.jpg")
+                cv2.imwrite(path,frame)
+                j=j+1
             lm_list = []  # Reset list
 
         # Draw bounding box
